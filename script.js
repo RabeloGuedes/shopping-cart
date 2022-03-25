@@ -3,6 +3,7 @@ const cartItems = document.querySelector('.cart__items');
 const totalPrice = document.createElement('h3');
 const cart = document.querySelector('.cart');
 const emptyCartBtn = document.querySelector('.empty-cart');
+const loading = document.createElement('h2');
 
 totalPrice.className = 'total-price';
 totalPrice.innerText = '0';
@@ -11,18 +12,28 @@ totalPrice.style.marginBottom = '20px';
 
 cart.insertBefore(totalPrice, emptyCartBtn);
 
-// const addLoadingScreen = () => {
-//   const loading = document.createElement('h2');
-//   loading.innerText = 'Loading...';
-//   loading.style.background = 'black';
-//   loading.style.color = 'white';
-  
-// };
+const addLoadingScreen = () => {
+  loading.innerText = 'Loading...';
+  loading.style.background = 'black';
+  loading.style.color = 'white';
+  loading.style.textAlign = 'center';
+  loading.style.fontSize = '80px';
+  loading.style.position = 'fixed';
+  loading.style.padding = '10px 30px';
+  loading.style.borderRadius = '5px';
+  loading.style.top = 'calc(50% - 50px)';
+  loading.style.left = 'calc(50% - 190px)';
+  loading.className = 'loading';
+  document.body.appendChild(loading);
+};
+const removeLoadingScreen = () => {
+  document.body.removeChild(loading);
+};
 
 const localStorageChecker = () => {
   if (localStorage.length > 0) {
     const localStorageCost = localStorage.getItem('cartCost').split('$');
-    return Number(localStorageCost[1]);
+    return Number(localStorageCost);
   } return 0;
 };
 
@@ -93,7 +104,9 @@ function createCartItemElement({ sku, name, salePrice }) {
 }
 
 const itens = async () => {
+  addLoadingScreen();
   const response = await fetchProducts();
+  removeLoadingScreen();
   const result = response.results;
   result.forEach((obj) => {
     const { id, title, thumbnail } = obj;
@@ -118,7 +131,9 @@ sectionItems.addEventListener('click', async ({ target }) => {
   if (target.classList.contains('item__add')) {
     const parent = target.parentNode;
     const fisrtChildText = getSkuFromProductItem(parent);
+    addLoadingScreen();
     const item = await fetchItem(fisrtChildText);
+    removeLoadingScreen();
     const { id, title, price } = item;
     const totalCost = priceUp(price);
     totalPrice.innerText = totalCost;
