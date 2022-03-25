@@ -1,5 +1,13 @@
 const sectionItems = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
+const totalPrice = document.createElement('h3');
+const cart = document.querySelector('.cart');
+const emptyCartBtn = document.querySelector('.empty-cart');
+totalPrice.className = 'total-price';
+totalPrice.innerText = 'Subtotal: R$ 0';
+totalPrice.style.textAlign = 'center';
+totalPrice.style.marginBottom = '20px';
+cart.insertBefore(totalPrice, emptyCartBtn);
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -55,12 +63,28 @@ const itens = async () => {
   });
 };
 
+const priceChanger = (price) => {
+ 
+};
+
+const cartClear = () => {
+ const cartItem = document.querySelectorAll('.cart__item');
+ cartItem.forEach((li) => {
+  cartItems.removeChild(li);
+ });
+ totalPrice.innerText = 'Subtotal: R$ 0';
+};
+
+emptyCartBtn.addEventListener('click', cartClear);
+
 sectionItems.addEventListener('click', async ({ target }) => {
   if (target.classList.contains('item__add')) {
     const parent = target.parentNode;
     const fisrtChildText = getSkuFromProductItem(parent);
     const item = await fetchItem(fisrtChildText);
     const { id, title, price } = item;
+    const cost = priceChanger(price);
+    totalPrice.innerText = `Subtotal: R$ ${cost}`;
     cartItems.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
     saveCartItems(cartItems);
   }
