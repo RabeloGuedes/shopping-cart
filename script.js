@@ -148,7 +148,7 @@ const getSavedCost = () => {
   totalPrice.innerHTML = totalCost; 
 };
 const getRidOf = () => {
-  getSavedCartItems();
+  cartItems.innerHTML = getSavedCartItems();
   const li = document.querySelectorAll('li.cart__item');
   li.forEach((item) => {
     item.addEventListener('click', cartItemClickListener);
