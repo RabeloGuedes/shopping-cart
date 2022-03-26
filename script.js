@@ -90,7 +90,7 @@ function cartItemClickListener({ target }) {
     const itemPrice = Number(splitted[1]);
     const newPrice = priceDown(itemPrice);
     totalPrice.innerText = newPrice;
-    saveCartItems(cartItems);
+    saveCartItems(cartItems.innerHTML);
     saveCost();
   }
 }
@@ -138,7 +138,7 @@ sectionItems.addEventListener('click', async ({ target }) => {
     const totalCost = priceUp(price);
     totalPrice.innerText = totalCost;
     cartItems.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
-    saveCartItems(cartItems);
+    saveCartItems(cartItems.innerHTML);
     saveCost();
   }
 });
