@@ -105,7 +105,7 @@ function createCartItemElement({ sku, name, salePrice }) {
 
 const itens = async () => {
   addLoadingScreen();
-  const response = await fetchProducts();
+  const response = await fetchProducts('computador');
   removeLoadingScreen();
   const result = response.results;
   result.forEach((obj) => {
