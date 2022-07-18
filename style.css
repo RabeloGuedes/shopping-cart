@@ -248,4 +248,54 @@ body {
     margin-top: 5vh;
     max-height: 70vh;
   }
+
+  .items {
+    display: flex;
+    flex-basis: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 5px;
+    width: 200px;
+    border: 2px solid rgb(234, 234, 233);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .item .item__sku {
+    display: none;
+  }
+  
+  .item .item__title {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .item .item__image {
+    width: 100%;
+  }
+
+  .item .item__price {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: .5rem 0;
+  }
+  
+  .item .item__add {
+    background-color: rgb(5, 52, 219);
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    color: white;
+  }  
 }

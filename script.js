@@ -32,7 +32,7 @@ const removeLoadingScreen = () => {
 };
 
 const localStorageChecker = () => {
-  if (localStorage.length > 0) {
+  if (localStorage.getItem('cartCost')) {
     const localStorageCost = localStorage.getItem('cartCost').split('$');
     return Number(localStorageCost);
   } return 'R$ 0.00';
@@ -54,13 +54,14 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
-function createProductItemElement({ sku, name, image }) {
+function createProductItemElement({ sku, name, image, price }) {
   const section = document.createElement('section');
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price.toFixed(2)}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
@@ -79,7 +80,8 @@ const priceDown = (price) => {
   cost -= price;
   const isThereAnyItem = document.querySelector('.cart__item');
   if (!isThereAnyItem) {
-    return 0.00;
+    const ZERO = 0;
+    return ZERO.toFixed(2);
   }
   return cost.toFixed(2);
 };
@@ -94,9 +96,10 @@ function cartItemClickListener({ target }) {
     const splitted = target.innerText.split('$');
     const itemPrice = Number(splitted[1]);
     const newPrice = priceDown(itemPrice);
-    totalPrice.innerText = `R$ ${newPrice}`;
+    totalPrice.innerText = newPrice;
     saveCartItems(cartItems.innerHTML);
     saveCost();
+    totalPrice.innerText = `R$ ${newPrice}`;
   }
 }
 
@@ -114,8 +117,8 @@ const itens = async () => {
   removeLoadingScreen();
   const result = response.results;
   result.forEach((obj) => {
-    const { id, title, thumbnail } = obj;
-    sectionItems.appendChild(createProductItemElement({ sku: id, name: title, image: thumbnail }));
+    const { id, title, thumbnail, price } = obj;
+    sectionItems.appendChild(createProductItemElement({ sku: id, name: title, image: thumbnail, price }));
   });
 };
 
@@ -126,8 +129,9 @@ const cartClear = () => {
  });
  localStorage.removeItem('cartList');
  cost = 0;
- totalPrice.innerText = `R$ ${cost}`;
+ totalPrice.innerText = cost;
  saveCost();
+ totalPrice.innerText = `R$ ${cost.toFixed(2)}`;
 };
 
 emptyCartBtn.addEventListener('click', cartClear);
@@ -141,16 +145,17 @@ sectionItems.addEventListener('click', async ({ target }) => {
     removeLoadingScreen();
     const { id, title, price } = item;
     const totalCost = priceUp(price);
-    totalPrice.innerText = `R$ ${totalCost}`;
+    totalPrice.innerText = totalCost;
     cartItems.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
     saveCartItems(cartItems.innerHTML);
     saveCost();
+    totalPrice.innerText = `R$ ${totalCost}`;
   }
 });
 
 const getSavedCost = () => {
   const totalCost = localStorage.getItem('cartCost');
-  totalPrice.innerHTML = `R$ ${totalCost}`; 
+  totalPrice.innerHTML = `R$ ${Number(totalCost).toFixed(2)}`; 
 };
 const getRidOf = () => {
   cartItems.innerHTML = getSavedCartItems();
