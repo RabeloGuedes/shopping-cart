@@ -7,7 +7,7 @@ const loading = document.createElement('h2');
 const cartBottom = document.querySelector('.cart-bottom');
 
 totalPrice.className = 'total-price';
-totalPrice.innerText = '0';
+totalPrice.innerText = 'R$ 0.00';
 totalPrice.style.textAlign = 'center';
 totalPrice.style.marginBottom = '20px';
 
@@ -35,7 +35,7 @@ const localStorageChecker = () => {
   if (localStorage.length > 0) {
     const localStorageCost = localStorage.getItem('cartCost').split('$');
     return Number(localStorageCost);
-  } return 0;
+  } return 'R$ 0.00';
 };
 
 let cost = localStorageChecker();
@@ -72,12 +72,16 @@ function getSkuFromProductItem(item) {
 
 const priceUp = (price) => {
   cost += price;
-  return cost;
+  return cost.toFixed(2);
 };
 
 const priceDown = (price) => {
   cost -= price;
-  return cost;
+  const isThereAnyItem = document.querySelector('.cart__item');
+  if (!isThereAnyItem) {
+    return 0.00;
+  }
+  return cost.toFixed(2);
 };
 
 const saveCost = () => {
@@ -90,7 +94,7 @@ function cartItemClickListener({ target }) {
     const splitted = target.innerText.split('$');
     const itemPrice = Number(splitted[1]);
     const newPrice = priceDown(itemPrice);
-    totalPrice.innerText = newPrice;
+    totalPrice.innerText = `R$ ${newPrice}`;
     saveCartItems(cartItems.innerHTML);
     saveCost();
   }
@@ -122,7 +126,7 @@ const cartClear = () => {
  });
  localStorage.removeItem('cartList');
  cost = 0;
- totalPrice.innerText = cost;
+ totalPrice.innerText = `R$ ${cost}`;
  saveCost();
 };
 
@@ -137,7 +141,7 @@ sectionItems.addEventListener('click', async ({ target }) => {
     removeLoadingScreen();
     const { id, title, price } = item;
     const totalCost = priceUp(price);
-    totalPrice.innerText = totalCost;
+    totalPrice.innerText = `R$ ${totalCost}`;
     cartItems.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
     saveCartItems(cartItems.innerHTML);
     saveCost();
@@ -146,7 +150,7 @@ sectionItems.addEventListener('click', async ({ target }) => {
 
 const getSavedCost = () => {
   const totalCost = localStorage.getItem('cartCost');
-  totalPrice.innerHTML = totalCost; 
+  totalPrice.innerHTML = `R$ ${totalCost}`; 
 };
 const getRidOf = () => {
   cartItems.innerHTML = getSavedCartItems();
