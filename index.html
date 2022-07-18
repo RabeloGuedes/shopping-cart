@@ -10,35 +10,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <script src="./helpers/fetchItem.js" defer></script>
+    <script src="./helpers/fetchItem.js" defer></script>
     <script src="./helpers/fetchProducts.js" defer></script>
     <script src="./helpers/saveCartItems.js" defer></script>
     <script src="./helpers/getSavedCartItems.js" defer></script>
-    <script src="script.js" defer></script> -->
+    <script src="script.js" defer></script> 
   </head>
   <body>
+
     <header class="header">
+
       <div class="container-left-side">
         <div class="container-title">
           <span class="title"><strong>trybe</strong></span>
           <span class="title">shopping</span>
         </div>
-        <i class="material-icons" style="font-size:30px;color:white">shopping_cart</i>
+        <i class="material-icons">shopping_cart</i>
       </div>
+
       <div class="container-cartTitle">
-        <!-- <span class="cart__title">Meu carrinho</span> -->
-        <button type="button" class="toggle-menu">
+
+        <span class="cart__title">Meu carrinho</span>
+
+        <div class="toggle-menu">
             <div class="menu-bar"></div>
             <div class="menu-bar"></div>
             <div class="menu-bar"></div>
-        </button>
+        </div>
+
       </div>
+
     </header>
+
     <section class="container">
       <section class="items"></section>
       <section class="cart">
         <ol class="cart__items"></ol>
-        <button class="empty-cart">Esvaziar carrinho</button>
+        <div class="cart-bottom">
+          <button class="empty-cart">Esvaziar carrinho</button>
+        </div>
       </section>
     </section>
   </body>

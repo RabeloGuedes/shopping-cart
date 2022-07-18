@@ -4,13 +4,14 @@ const totalPrice = document.createElement('h3');
 const cart = document.querySelector('.cart');
 const emptyCartBtn = document.querySelector('.empty-cart');
 const loading = document.createElement('h2');
+const cartBottom = document.querySelector('.cart-bottom');
 
 totalPrice.className = 'total-price';
 totalPrice.innerText = '0';
 totalPrice.style.textAlign = 'center';
 totalPrice.style.marginBottom = '20px';
 
-cart.insertBefore(totalPrice, emptyCartBtn);
+cartBottom.insertBefore(totalPrice, emptyCartBtn);
 
 const addLoadingScreen = () => {
   loading.innerText = 'Loading...';
@@ -154,6 +155,14 @@ const getRidOf = () => {
     item.addEventListener('click', cartItemClickListener);
   });
 };
+
+const toggleBtn = document.querySelector('.toggle-menu');
+const toggleMenuBar = () => {
+  const sideMenu = document.querySelector('.cart');
+  sideMenu.classList.toggle('active');
+};
+
+toggleBtn.addEventListener('click', toggleMenuBar);
 
 window.onload = async () => {
   await itens();
