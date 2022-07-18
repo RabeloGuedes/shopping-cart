@@ -168,7 +168,13 @@ const getRidOf = () => {
 const toggleBtn = document.querySelector('.toggle-menu');
 const toggleMenuBar = () => {
   const sideMenu = document.querySelector('.cart');
+  const menuLine1 = document.querySelector('.menu-line1');
+  const menuLine2 = document.querySelector('.menu-line2');
+  const menuLine3 = document.querySelector('.menu-line3');
   sideMenu.classList.toggle('active');
+  menuLine1.classList.toggle('active');
+  menuLine2.classList.toggle('active');
+  menuLine3.classList.toggle('active');
 };
 
 toggleBtn.addEventListener('click', toggleMenuBar);

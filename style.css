@@ -70,11 +70,24 @@ body {
   cursor: pointer;
 }
 
-.menu-bar {
+.menu-line1, .menu-line2, .menu-line3 {
   width: 2.5rem;
   height: 5px;
   background-color: black;
   margin: 6px 0;
+  transition: 0.3s ease;
+}
+
+.menu-line1.active {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.menu-line2.active {
+  opacity: 0;
+}
+
+.menu-line3.active {
+  transform: rotate(-45deg) translate(5px, -7px);
 }
 
 .container-cartTitle span {
@@ -85,8 +98,8 @@ body {
   content: '';
   position: absolute;
   top: 15px;
-  right: 61.5%;
-  width: 39.5%;
+  right: 90%;
+  width: 10%;
   height: 15px;
   background: rgb(10, 118, 79);
   transform: skew(-45deg);
@@ -97,8 +110,8 @@ body {
   content: '';
   position: absolute;
   top: 30px;
-  right: 75%;
-  width: 25%;
+  right: 90%;
+  width: 10%;
   height: 15px;
   background: rgb(10, 118, 79);
   transform: skew(45deg);
@@ -203,7 +216,7 @@ body {
     letter-spacing: 3px;
   }
 
-  .menu-bar {
+  .menu-line1, .menu-line2, .menu-line3 {
     display: none;
   }
 
