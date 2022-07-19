@@ -91,9 +91,9 @@ const saveCost = () => {
 };
 
 function cartItemClickListener({ target }) {
-  if (target.classList.contains('cart__item')) {
-    cartItems.removeChild(target);
-    const splitted = target.innerText.split('$');
+  if (target.parentNode.classList.contains('cart__item')) {
+    const splitted = target.parentNode.querySelector('.price-tag').innerText.split('$');
+    cartItems.removeChild(target.parentNode);
     const itemPrice = Number(splitted[1]);
     const newPrice = priceDown(itemPrice);
     totalPrice.innerText = newPrice;
@@ -103,12 +103,25 @@ function cartItemClickListener({ target }) {
   }
 }
 
-function createCartItemElement({ sku, name, salePrice }) {
+function createCartItemElement({ sku, name, salePrice, thumbnail }) {
   const li = document.createElement('li');
-  li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  li.addEventListener('click', cartItemClickListener);
-  return li;
+  const div = document.createElement('div');
+  const button = document.createElement('button');
+  const img = document.createElement('img');
+  const p = document.createElement('p');
+  img.src = thumbnail;
+  button.innerText = 'Remover do carrinho';
+  li.innerText = `SKU: ${sku}
+  NAME: ${name}`;
+  p.innerText = `PRICE: $${salePrice.toFixed(2)}`
+  p.classList.add('price-tag');
+  div.appendChild(li);
+  div.appendChild(img);
+  div.appendChild(p);
+  div.appendChild(button);
+  div.className = 'cart__item';
+  button.addEventListener('click', cartItemClickListener);
+  return div;
 }
 
 const itens = async () => {
@@ -122,7 +135,7 @@ const itens = async () => {
     const newTitle = [];
     for (let index = 0; index <= 5; index += 1) {
       newTitle.push(arrayTitle[index]);
-    };
+    }
     const strTitle = `${newTitle.join(' ')} ...`;
     sectionItems.appendChild(createProductItemElement({ sku: id, name: strTitle, image: thumbnail, price }));
   });
@@ -149,10 +162,16 @@ sectionItems.addEventListener('click', async ({ target }) => {
     addLoadingScreen();
     const item = await fetchItem(fisrtChildText);
     removeLoadingScreen();
-    const { id, title, price } = item;
+    const { id, title, price, thumbnail } = item;
     const totalCost = priceUp(price);
     totalPrice.innerText = totalCost;
-    cartItems.appendChild(createCartItemElement({ sku: id, name: title, salePrice: price }));
+    const arrayTitle = title.split(' ');
+    const newTitle = [];
+    for (let index = 0; index <= 5; index += 1) {
+      newTitle.push(arrayTitle[index]);
+    }
+    const strTitle = `${newTitle.join(' ')} ...`;
+    cartItems.appendChild(createCartItemElement({ sku: id, name: strTitle, salePrice: price, thumbnail }));
     saveCartItems(cartItems.innerHTML);
     saveCost();
     totalPrice.innerText = `R$ ${totalCost}`;
@@ -165,8 +184,8 @@ const getSavedCost = () => {
 };
 const getRidOf = () => {
   cartItems.innerHTML = getSavedCartItems();
-  const li = document.querySelectorAll('li.cart__item');
-  li.forEach((item) => {
+  const div = document.querySelectorAll('div.cart__item');
+  div.forEach((item) => {
     item.addEventListener('click', cartItemClickListener);
   });
 };

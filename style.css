@@ -182,7 +182,7 @@ body {
   height: auto;
   margin: 5px;
   width: 90vw;
-  border: 2px solid rgb(234, 234, 233);
+  border: 2px solid rgb(234, 234, 234);
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 5px 10px 8px rgba(0, 0, 0, .3); 
@@ -219,11 +219,70 @@ body {
   margin: 0 0 10px;
   padding: 10px;
   color: white;
-}  
+}
 
+.cart__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 80%;
+}
+
+.cart__item {
+  border: 2px solid rgba(0, 0, 0, .05);
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, .3); 
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  width: 90%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart__item > button, .empty-cart {
+  padding: 10px;
+  background-color: rgb(175, 11, 11);
+  border: none;
+  border-radius: 5px;
+  color: rgb(212, 212, 212);
+  font-weight: 700;
+}
+
+.cart__item > button:hover, .empty-cart:hover {
+  background-color: rgb(217, 12, 12);
+}
+
+.cart__item > li {
+  width: 90%;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.cart__item > img {
+  width: 30%;
+  margin-top: 10px;
+}
+
+.cart__item > p {
+  margin: 15px 0;
+}
+
+.cart__item > button {
+  margin-bottom: 20px;
+}
+
+.cart__items::-webkit-scrollbar {
+  opacity: 0;
+}
+
+.price-tag {
+  font-weight: 700;
+}
 /* Body Settings */
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1140px) {
   .container-cartTitle .cart__title {
     color: white;
     font-size: 20px;
@@ -323,13 +382,28 @@ body {
     margin: 40px 0;
   }
 
+  .item .item__image {
+    width: 100%;
+  }
+
   .item {
     margin: 5px;
     width: 16%;
   }
 
-  .item .item__image {
-    width: 100%;
+  .cart__items::-webkit-scrollbar {
+    width: 8px;
+    opacity: 1;
+  }
+  
+  .cart__items::-webkit-scrollbar-track {
+    background-color:  #0A764F;
+    border-radius: 15px;
+  }
+  
+  .cart__items::-webkit-scrollbar-thumb {
+    background-color: #03342D;
+    border-radius: 15px;
   }
 }
 
@@ -347,6 +421,9 @@ body {
 
 @media screen and (max-width: 1140px) and (min-width: 1024px) {
   .item {
-    width: 20vw;
+    width: 18vw;
+  }
+  .item > img {
+    width: 18vw !important;
   }
 }
