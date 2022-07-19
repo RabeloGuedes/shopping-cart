@@ -118,7 +118,13 @@ const itens = async () => {
   const result = response.results;
   result.forEach((obj) => {
     const { id, title, thumbnail, price } = obj;
-    sectionItems.appendChild(createProductItemElement({ sku: id, name: title, image: thumbnail, price }));
+    const arrayTitle = title.split(' ');
+    const newTitle = [];
+    for (let index = 0; index <= 5; index += 1) {
+      newTitle.push(arrayTitle[index]);
+    };
+    const strTitle = `${newTitle.join(' ')} ...`;
+    sectionItems.appendChild(createProductItemElement({ sku: id, name: strTitle, image: thumbnail, price }));
   });
 };
 

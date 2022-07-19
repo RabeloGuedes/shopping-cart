@@ -169,9 +169,61 @@ body {
   padding: 10px;
 }
 
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  margin: 5px;
+  width: 90vw;
+  border: 2px solid rgb(234, 234, 233);
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, .3); 
+}
+
+.item .item__sku {
+  display: none;
+}
+
+.item .item__title {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding: 10px;
+  text-align: justify;
+  width: 90%;
+}
+
+.item .item__image {
+  width: 30vw;
+}
+
+.item .item__price {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: .5rem 0;
+}
+
+.item .item__add {
+  background-color: rgb(5, 52, 219);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 0 10px;
+  padding: 10px;
+  color: white;
+}  
+
 /* Body Settings */
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .container-cartTitle .cart__title {
     color: white;
     font-size: 20px;
@@ -229,6 +281,7 @@ body {
     height: 100%;
     width: 70%;
   }
+
   .container > .cart {
     width: 30%;
     transform: translateX(0%);
@@ -269,46 +322,31 @@ body {
     justify-content: center;
     margin: 40px 0;
   }
-  
+
   .item {
-    display: flex;
-    flex-direction: column;
-    height: auto;
     margin: 5px;
-    width: 200px;
-    border: 2px solid rgb(234, 234, 233);
-    border-radius: 5px;
-    box-sizing: border-box;
+    width: 16%;
   }
-  
-  .item .item__sku {
-    display: none;
-  }
-  
-  .item .item__title {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    padding: 10px;
-    text-align: center;
-  }
-  
+
   .item .item__image {
     width: 100%;
   }
+}
 
-  .item .item__price {
-    text-align: center;
-    font-size: 1.5rem;
-    margin: .5rem 0;
+@media screen and (max-width: 768px) and (min-width: 640px) {
+  .item {
+    width: 45vw;
   }
-  
-  .item .item__add {
-    background-color: rgb(5, 52, 219);
-    border: 0;
-    cursor: pointer;
-    margin: 0;
-    padding: 10px;
-    color: white;
-  }  
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .item {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 1140px) and (min-width: 1024px) {
+  .item {
+    width: 20vw;
+  }
 }
