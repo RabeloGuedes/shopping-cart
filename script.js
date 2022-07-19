@@ -112,6 +112,7 @@ function createCartItemElement({ sku, name, salePrice, thumbnail }) {
   const p = document.createElement('p');
   img.src = thumbnail;
   button.innerText = 'Remover do carrinho';
+  button.className = "remove-btn";
   li.innerText = `SKU: ${sku}
   NAME: ${name}`;
   p.innerText = `PRICE: $${salePrice.toFixed(2)}`
@@ -185,8 +186,8 @@ const getSavedCost = () => {
 };
 const getRidOf = () => {
   cartItems.innerHTML = getSavedCartItems();
-  const div = document.querySelectorAll('div.cart__item');
-  div.forEach((item) => {
+  const removeBtns = document.querySelectorAll('.remove-btn');
+  removeBtns.forEach((item) => {
     item.addEventListener('click', cartItemClickListener);
   });
 };
