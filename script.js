@@ -27,6 +27,7 @@ const addLoadingScreen = () => {
   loading.className = 'loading';
   document.body.appendChild(loading);
 };
+
 const removeLoadingScreen = () => {
   document.body.removeChild(loading);
 };
