@@ -48,6 +48,7 @@ npm install
 
 ```bash
 npm test
+npm run test:coverage
 ```
   
 ## Time de desenvolvimento
@@ -120,6 +121,7 @@ npm install
 
 ```bash
 npm test
+npm run test:coverage
 ```
   
 ## Squad
@@ -193,6 +195,7 @@ npm install
 
 ```bash
 npm test
+npm run test:coverage
 ```
   
 ## Entwickungsteam
