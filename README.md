@@ -19,7 +19,8 @@ Projeto da [Trybe](https://www.betrybe.com/) - Bloco 9 - Aplicação que simula 
 <details>
   <summary><strong>🖼️ Gif do projeto</strong></summary><br />
 
-  <img src="project-infos/shopping-cart.gif"/>
+  <img width="45%" src="project-infos/shopping-cart.gif"/>
+  <img width="45%" src="project-infos/shopping-cart-mobile.gif"/>
 </details>
 
 ## 🚀 Tecnologias
@@ -92,7 +93,8 @@ Project from [Trybe](https://www.betrybe.com/) - Block 9 - Application, which si
 <details>
   <summary><strong>🖼️ Project's Gif</strong></summary><br />
 
-  <img src="project-infos/shopping-cart.gif"/>
+  <img width="45%" src="project-infos/shopping-cart.gif"/>
+  <img width="45%" src="project-infos/shopping-cart-mobile.gif"/>
 </details>
 
 ## 🚀 Technologies
@@ -160,7 +162,8 @@ Projekt von [Trybe](https://www.betrybe.com/) - Block 9 - Enkaufswagen Applikati
 <details>
   <summary><strong>🏆 Meine Leistung</strong></summary><br />
 
-  <img src="project-infos/requisitos-do-shopping-cart.png"/>
+  <img width="45%" src="project-infos/requisitos-do-shopping-cart.png"/>
+  <img width="45%" src="project-infos/shopping-cart-mobile.gif"/>
 </details>
   
 <details>
