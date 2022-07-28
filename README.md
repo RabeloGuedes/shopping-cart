@@ -169,19 +169,18 @@ Projekt von [Trybe](https://www.betrybe.com/) - Block 9 - Enkaufswagen Applikati
 
 <details>
   <summary><strong>🏆 Meine Leistung</strong></summary><br />
-
-    <div>
-    <img src="project-infos/shopping-cart.gif"/>
-  </div>
-  <div>
-    <img height="400px"src="project-infos/shopping-cart-mobile.gif"/>
-  <div/>
+  <img src="project-infos/requisitos-do-shopping-cart.png"/>
 </details>
   
 <details>
   <summary><strong>🖼️ Projekts Gif</strong></summary><br />
 
-  <img src="project-infos/shopping-cart.gif"/>
+  <div>
+    <img src="project-infos/shopping-cart.gif"/>
+  </div>
+  <div>
+    <img height="400px"src="project-infos/shopping-cart-mobile.gif"/>
+  <div/>
 </details>
 
 ## 🚀 Technologies
